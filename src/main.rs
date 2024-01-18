@@ -1,6 +1,4 @@
-use actix_web::get;
-use actix_web::App;
-use actix_web::HttpServer;
+use actix_web::{get, App, HttpResponse, HttpServer, Responder};
 
 #[tokio::main]
 async fn main() -> std::io::Result<()> {
@@ -11,6 +9,6 @@ async fn main() -> std::io::Result<()> {
 }
 
 #[get("/")]
-async fn hello() -> &'static str {
-    "Hello world!"
+async fn hello() -> impl Responder {
+    HttpResponse::Ok().body("Hello world!")
 }
