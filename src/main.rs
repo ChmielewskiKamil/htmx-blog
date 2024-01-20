@@ -1,3 +1,4 @@
+use actix_files as fs;
 use actix_web::{get, post, web, App, HttpResponse, HttpServer, Responder};
 use askama_actix::Template;
 use serde::Deserialize;
@@ -28,6 +29,7 @@ async fn main() -> std::io::Result<()> {
     HttpServer::new(move || {
         App::new()
             .app_data(web::Data::new(db.clone()))
+            .service(fs::Files::new("/static", "assets"))
             .service(index)
             .service(create_post)
             .service(show_posts)
