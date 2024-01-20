@@ -2,4 +2,6 @@
 .env
 tailwindcss
 *.db
+*.db-shm
+*.db-wal
 assets/
