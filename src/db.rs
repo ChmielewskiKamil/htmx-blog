@@ -40,8 +40,8 @@ impl Database {
         }
     }
 
-    pub fn connection(&self) -> SqlitePool {
-        self.connection.clone()
+    pub fn connection(self) -> SqlitePool {
+        self.connection
     }
 }
 
